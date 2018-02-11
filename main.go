@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	runner "github.com/hasasn/lambhack/runner"
 	sparta "github.com/mweagle/Sparta"
 	spartaCF "github.com/mweagle/Sparta/aws/cloudformation"
 	spartaAPIG "github.com/mweagle/Sparta/aws/events"
@@ -31,8 +32,8 @@ func lambhack(ctx context.Context,
 	commandOutput := runner.Run(command)
 	// Return a message, together with the incoming input...
 	return lambhackResponse{
-		Message: fmt.Sprintf("Welcome to lambhack!" + command),
-		Request: gatewayEvent,
+		Message: fmt.Sprintf("Welcome to lambhack!" + commandOutput),
+		//Request: gatewayEvent,
 	}, nil
 }
 
